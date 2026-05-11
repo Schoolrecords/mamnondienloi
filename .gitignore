@@ -1,0 +1,6 @@
+Code.gs
+*.gsheet
+.DS_Store
+Thumbs.db
+*.log
+.claude/
