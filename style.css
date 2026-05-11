@@ -676,12 +676,14 @@
   .mc-table{width:100%;border-collapse:collapse;font-size:.82rem;table-layout:fixed}
   .mc-table thead th{background:#eef4fb;padding:10px 12px;text-align:left;font-weight:600;color:var(--g-deep);font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #cfddef;border-right:1px solid #cbd5e1;white-space:nowrap}
   .mc-table thead th:last-child{border-right:none}
-  .mc-table thead th:nth-child(1),.mc-table tbody td:nth-child(1){width:44px;text-align:center}
+  .mc-table thead th:nth-child(1),.mc-table tbody td:nth-child(1){width:40px;text-align:center}
   .mc-table thead th:nth-child(2),.mc-table tbody td:nth-child(2){width:96px}
-  /* Cột 3 (Tên minh chứng) — flex auto, được +5% từ việc bỏ cột folder + giảm cột Người PT */
-  .mc-table thead th:nth-child(4),.mc-table tbody td:nth-child(4){width:130px}  /* Số/ngày BH +5% (~110→130) */
-  .mc-table thead th:nth-child(5),.mc-table tbody td:nth-child(5){width:140px}  /* Nơi lưu HSS */
-  .mc-table thead th:nth-child(6),.mc-table tbody td:nth-child(6){width:200px}  /* Người PT -20% (280→200, đã trừ ~28%) */
+  /* Cột 3 (Tên minh chứng) — flex auto, chia phần còn lại */
+  .mc-table thead th:nth-child(4),.mc-table tbody td:nth-child(4){width:120px}  /* Số/ngày BH */
+  .mc-table thead th:nth-child(5),.mc-table tbody td:nth-child(5){width:130px}  /* Nơi lưu HSS */
+  .mc-table thead th:nth-child(6),.mc-table tbody td:nth-child(6){width:170px}  /* Người PT */
+  .mc-table thead th:nth-child(7),.mc-table tbody td:nth-child(7){width:110px}  /* Ghi chú (v2026.05+) */
+  .mc-table .mc-note-cell{color:#64748b;font-size:.78rem;font-style:italic;line-height:1.4}
   .mc-table tbody td{padding:10px 12px;border-bottom:1px solid #e2e8f0;border-right:1px solid #f3f6f4;vertical-align:middle;color:#334155;line-height:1.5;word-wrap:break-word;overflow-wrap:break-word}
   .mc-table tbody td:last-child{border-right:none}
   .mc-table tbody td:first-child{text-align:center;color:#94a3b8;font-size:.78rem}

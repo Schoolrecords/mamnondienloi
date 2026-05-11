@@ -1077,17 +1077,22 @@
           const codeDisplay = ev.code || (ev.note ? '→ ' + ev.note : '');
           const codeClass = isRef ? 'mc-code mc-code-ref' : 'mc-code';
           const rowClass = isRef ? 'mc-row-ref' : '';
-          return '<tr class="'+rowClass+'" data-mc="'+(ev.code+' '+ev.content).toLowerCase().replace(/"/g,'')+'">'+
+          // v2026.05+: thêm cột "Ghi chú" để khớp với Sheet MinhChung (Excel mẫu 9 cột).
+          // Với MC tham chiếu (không có mã riêng), ev.note đã được hiển thị ở cột "Mã MC" dưới dạng "→ [Hx-x.x-yy]"
+          // → tránh hiển thị trùng ở cột Ghi chú.
+          const noteDisplay = isRef ? '' : (ev.note || '');
+          return '<tr class="'+rowClass+'" data-mc="'+(ev.code+' '+ev.content+' '+ev.note).toLowerCase().replace(/"/g,'')+'">'+
             '<td data-lbl="TT">'+(ev.tt||'')+'</td>'+
             '<td data-lbl="Mã MC" class="'+codeClass+'">'+escapeHtml(codeDisplay)+'</td>'+
             '<td data-lbl="Tên MC" class="mc-content mc-content-cell">'+escapeHtml(ev.content||'').replace(/\n/g,'<br>')+'</td>'+
             '<td data-lbl="Ngày BH">'+escapeHtml(ev.issueDate||'')+'</td>'+
             '<td data-lbl="Nơi lưu (HSS)">'+chipsHtml+'</td>'+
-            '<td data-lbl="Người phụ trách">'+escapeHtml(ev.responsible||'')+'</td></tr>';
+            '<td data-lbl="Người phụ trách">'+escapeHtml(ev.responsible||'')+'</td>'+
+            '<td data-lbl="Ghi chú" class="mc-note-cell">'+escapeHtml(noteDisplay)+'</td></tr>';
         }).join('');
         return '<div class="mc-tchi">'+
           '<div class="mc-tchi-label"><span class="code">'+escapeHtml(chi.code)+'</span>'+escapeHtml(chi.desc)+'</div>'+
-          '<table class="mc-table"><thead><tr><th>TT</th><th>Mã MC</th><th>Tên minh chứng</th><th>Số/ngày BH</th><th>Nơi lưu (HSS)</th><th>Người phụ trách</th></tr></thead>'+
+          '<table class="mc-table"><thead><tr><th>TT</th><th>Mã MC</th><th>Tên minh chứng</th><th>Số/ngày BH</th><th>Nơi lưu (HSS)</th><th>Người phụ trách</th><th>Ghi chú</th></tr></thead>'+
           '<tbody>'+rows+'</tbody></table></div>';
       }).join('');
       return '<div class="mc-tc"><div class="mc-tc-head" onclick="this.parentElement.classList.toggle(\'open\')">'+
